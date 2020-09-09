@@ -1,0 +1,94 @@
+		  
+				   // vv.getRenderContext().setVertexFillPaintTransformer(new PickableVertexPaintTransformer<Integer>(vv.getPickedVertexState(), Color.red, Color.yellow));
+			        vv.getRenderContext().setEdgeDrawPaintTransformer(new PickableEdgePaintTransformer<Number>(vv.getPickedEdgeState(), Color.black, Color.cyan));
+			        //vv.getRenderContext().setVertexFillPaintTransformer(new PickableVertexPaintTransformer<String>(vv.getPickedVertexState(), Color.white, Color.yellow));
+			        vv.getRenderContext().setVertexRenderer(MyRenderer);
+			      
+			        //vv.getRenderer().setVertexRenderer(new GradientVertexRenderer<String,Number>(Color.red, Color.white, true));
+			        //vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+			        //vv.getRenderer().getVertexLabelRenderer().setPosition(Renderer.VertexLabel.Position.CNTR);
+			        
+			       
+	
+	
+	static class MyRenderer implements Renderer.Vertex<String, Number> {
+	    public void paintVertex(RenderContext<String, Number> rc,
+	        Layout<String, Number> layout, String vertex) {
+	     GraphicsDecorator graphicsContext = rc.getGraphicsContext();
+	  
+	      graphicsContext.setPaint(Color.white);
+	      graphicsContext.fill(new Rectangle(100,100));
+	    }
+	  }
+
+	textFieldArray[0] = new JTextField();
+		containerPanel.add(textFieldArray[0]);
+		textFieldArray[0].setColumns(10);
+		
+		radioButtonArray[0] = new JRadioButton("+");
+		radioButtonArray[0].setVerticalTextPosition(radioButtonArray[0].TOP);
+		radioButtonArray[0].setHorizontalTextPosition(radioButtonArray[0].CENTER);
+		containerPanel.add(radioButtonArray[0]);
+		
+		radioButtonArray[1] = new JRadioButton("-");
+		radioButtonArray[1].setVerticalTextPosition(radioButtonArray[1].TOP);
+		radioButtonArray[1].setHorizontalTextPosition(radioButtonArray[1].CENTER);
+		containerPanel.add(radioButtonArray[1]);
+		
+
+		textFieldArray[1] = new JTextField();
+		containerPanel.add(textFieldArray[1]);
+		textFieldArray[1].setColumns(10);
+		
+		
+		addAnother.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				counter++;
+				
+				JPanel newContainerPanel = new JPanel();
+				newContainerPanel.setLayout(new FlowLayout(5));
+				
+				textFieldArray = Arrays.copyOf(textFieldArray, textFieldArray.length+2);
+				textFieldArray[textFieldArray.length-2] = new JTextField();
+				textFieldArray[textFieldArray.length-1] = new JTextField();
+				
+				radioButtonArray = Arrays.copyOf(radioButtonArray, radioButtonArray.length+2);
+				radioButtonArray[textFieldArray.length-2] = new JRadioButton("+");
+				radioButtonArray[textFieldArray.length-1] = new JRadioButton("-");
+				
+				
+				newContainerPanel.add(textFieldArray[textFieldArray.length-2]);
+				textFieldArray[textFieldArray.length-2].setColumns(10);
+				
+				radioButtonArray[textFieldArray.length-2].setVerticalTextPosition(radioButtonArray[textFieldArray.length-2].TOP);
+				radioButtonArray[textFieldArray.length-2].setHorizontalTextPosition(radioButtonArray[textFieldArray.length-2].CENTER);
+				newContainerPanel.add(radioButtonArray[textFieldArray.length-2]);
+				
+				radioButtonArray[textFieldArray.length-1].setVerticalTextPosition(radioButtonArray[textFieldArray.length-1].TOP);
+				radioButtonArray[textFieldArray.length-1].setHorizontalTextPosition(radioButtonArray[textFieldArray.length-1].CENTER);
+				newContainerPanel.add(radioButtonArray[textFieldArray.length-1]);
+				
+				newContainerPanel.add(textFieldArray[textFieldArray.length-1]);
+				textFieldArray[textFieldArray.length-1].setColumns(10);
+			
+				
+				leftPanel.add(newContainerPanel);
+				leftPanel.revalidate();
+				//repaint();
+								
+			
+			}
+		}); 
+		
+		
+			  int count = 0;
+	    		  for (String origin : inputHash.keySet()) {
+	    			  for (String end : inputHash.get(origin)) {
+	    				  
+	    				  inputArray[count][0] = origin;
+	    				  inputArray[count][1] = end;
+	    				  inputArray[count][2] = "+";
+	    			  }
+	    		  }
+	    		
