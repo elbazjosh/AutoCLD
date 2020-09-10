@@ -1,4 +1,3 @@
-# AutoCLD
 
 ## Description
 
